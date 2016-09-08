@@ -1,32 +1,53 @@
-class Array
-	def sorted?
-		each_cons(2).all? { |a, b| (a <=> b) <= 0 }
-	end
-end
 
+
+
+=begin
 def bubble_sort(array)
-	sorting = true
 	i = 0
-
-	while sorting 
-		until i == array.length
-			swap(array[i], array[i].next)
+	output = array
+	loop do 
+		until i == output.length - 1 
+			left, right = num, output[i + 1]
+			puts "#{left}, #{right}"
+			output.push(swap(left, right)) if swap?(left, right)
 			i += 1
 		end
-		break if array.sorted?
-		i = 0
+		break if sorted? output
+		i, output = 
 	end
 
-	array
+	puts "#{new_array.compact.flatten}"
+end
+=end
+
+def bubble_sort(array)
+	i = 0
+	array.map! do |num|
+		num = 1
+	end
 end
 
-def swap(left, right)
-	left, right = right, left if left > right
+def swap(a, b)
+	unless b == nil
+		a, b = b, a
+	end
 end
 
+def swap?(a, b)
+	b != nil && a > b
+end
+
+def sorted? array
+	array.each_cons(2).all? do |a, b| 
+		unless b.nil?
+			a <= b 
+		end
+	end
+end
+
+puts "#{bubble_sort([4, 3, 78, 2, 0, 2])}"
 
 
-puts bubble_sort([4, 3, 78, 2, 0, 2])
 
 # bubble_sort([4,3,78,2,0,2])
 # [0,2,2,3,4,78]
