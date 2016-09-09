@@ -1,36 +1,15 @@
-
-
-
-=begin
 def bubble_sort(array)
-	i = 0
 	output = array
-	loop do 
-		until i == output.length - 1 
+	until sorted? output
+		output.each_with_index do |num, i|
 			left, right = num, output[i + 1]
-			puts "#{left}, #{right}"
-			output.push(swap(left, right)) if swap?(left, right)
-			i += 1
+			if swap?(left, right)
+				output[i] = right
+				output[i + 1] = left
+			end
 		end
-		break if sorted? output
-		i, output = 
 	end
-
-	puts "#{new_array.compact.flatten}"
-end
-=end
-
-def bubble_sort(array)
-	i = 0
-	array.map! do |num|
-		num = 1
-	end
-end
-
-def swap(a, b)
-	unless b == nil
-		a, b = b, a
-	end
+	output
 end
 
 def swap?(a, b)
@@ -44,6 +23,7 @@ def sorted? array
 		end
 	end
 end
+
 
 puts "#{bubble_sort([4, 3, 78, 2, 0, 2])}"
 
