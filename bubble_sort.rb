@@ -12,6 +12,26 @@ def bubble_sort(array)
 	output
 end
 
+def bubble_sort_by(array)
+	output = array
+	i = 0
+	until sorted? output
+		while i < output.length - 1
+			left, right = output[i], output[i + 1]
+			unless right == nil
+				value = yield left, right
+				if value > 0
+					output[i] = right
+					output[i + 1] = left
+				end
+			end
+			i += 1
+		end
+	end
+	puts "#{output}"
+end
+
+
 def swap?(a, b)
 	b != nil && a > b
 end
@@ -19,18 +39,26 @@ end
 def sorted? array
 	array.each_cons(2).all? do |a, b| 
 		unless b.nil?
-			a <= b 
+			a.length <= b.length
 		end
 	end
 end
 
 
-puts "#{bubble_sort([4, 3, 78, 2, 0, 2])}"
+#puts "#{bubble_sort([4, 3, 78, 2, 0, 2])}"
+bubble_sort_by(["hi", "hello", "hiya", "hey"]) do |left, right|  
+	left.length - right.length
+end
 
 
 
 # bubble_sort([4,3,78,2,0,2])
 # [0,2,2,3,4,78]
+
+#bubble_sort_by(["hi","hello","hey"]) do |left,right|
+   #left.length - right.length
+#end
+#["hi", "hey", "hello"]
 
 
 #[4, 3, 78, 2, 0, 2]
