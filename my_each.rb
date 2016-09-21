@@ -111,15 +111,3 @@ def multiply_els(array)
 end
 
 my_proc = Proc.new { |el| el ** 2 }
-
-
-[1, 2, 5, 3, 4].my_each { |num| puts num }
-[10, 12, 45, 56, 100].my_each_with_index { |num, i| puts "Number: #{num}, Index: #{i}." }
-puts [1, 2, 3, 4, 5, 6].my_select { |num| num % 2 == 0}
-puts ["Zach", "Lauren", 4, "Skylie"].my_all? { |el| el.is_a? String }
-puts ["Zach", "Lauren", "Isaac", "Skylie"].my_any? { |el| el.is_a? Fixnum }
-puts ["Zach", "Lauren", "Isaac", "Skylie"].my_none? { |el| el.is_a? Fixnum }
-puts [1, 2, 3, 4, 5, 6].my_count { |num| num % 2 == 0}
-puts [1, 2, 3, 4, 5, 6].my_inject { |sum, num| sum + num }
-puts multiply_els([5, 6, 7, 8, 9])
-puts [1, 2, 3, 4, 5, 6].my_map(&my_proc) { |num| num ** 2 }
